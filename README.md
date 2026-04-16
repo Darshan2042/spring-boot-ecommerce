@@ -232,34 +232,6 @@ npm test
 - Expiry: `12/25`
 - CVC: `123`
 
-## Deployment
-
-### Deploy to Render.com (Free)
-
-1. Push code to GitHub
-2. Create account on [Render.com](https://render.com)
-3. New Web Service → Connect GitHub repo
-4. Set environment variables:
-   ```
-   DATABASE_URL=your_mysql_url
-   DATABASE_USER=root
-   DATABASE_PASSWORD=your_password
-   STRIPE_SECRET_KEY=sk_test_xxx
-   JWT_SECRET=your_secret_key
-   ALLOWED_ORIGINS=https://your-frontend-url.com
-   ```
-5. Deploy!
-
-### Deploy to Railway.app (Free)
-
-1. Push code to GitHub
-2. Create account on [Railway.app](https://railway.app)
-3. New Project → GitHub repo
-4. Add MySQL database plugin
-5. Set environment variables
-6. Deploy!
-
-See [deployment guide](./DEPLOYMENT.md) for detailed instructions.
 
 ## Project Structure
 
@@ -360,22 +332,6 @@ kill -9 <PID>
 4. Push to branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## License
-
-This project is licensed under the MIT License - see LICENSE file for details.
-
-## Support
-
-- 📧 Email: support@ecommerce-app.com
-- 🐛 Issues: [GitHub Issues](https://github.com/Darshan2042/spring-boot-ecommerce/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/Darshan2042/spring-boot-ecommerce/discussions)
-
-## Author
-
-**Darshan Patel**
-- GitHub: [@Darshan2042](https://github.com/Darshan2042)
-- LinkedIn: [Darshan Patel](https://linkedin.com/in/darshan-patel)
-- Portfolio: [yourportfolio.com](https://yourportfolio.com)
 
 ## Acknowledgments
 
