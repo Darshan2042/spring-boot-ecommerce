@@ -165,4 +165,26 @@ A full-stack e-commerce application built with React and Spring Boot, featuring 
 
 ## Screen Shots
 
+#### Home Page:
+<img width="1903" height="971" alt="image" src="https://github.com/user-attachments/assets/6efade29-dfd1-4e88-81f6-b7f583f4d1e3" />
+
+#### Customer Login Page:
+<img width="1919" height="970" alt="image" src="https://github.com/user-attachments/assets/f65f1827-6f31-438c-b8b7-6f079d061f29" />
+
+#### Admin Login Page:
+<img width="1919" height="972" alt="image" src="https://github.com/user-attachments/assets/3be1e36c-1e4c-43a4-a0aa-2150aec2d68e" />
+
+#### Admin Dashboard:
+<img width="1898" height="969" alt="image" src="https://github.com/user-attachments/assets/bd7f2629-5b00-4221-9484-9ccc86da2fc1" />
+
+#### Products Page:
+<img width="1919" height="972" alt="image" src="https://github.com/user-attachments/assets/3d9cde47-5e55-4bea-a1cc-8202cca8cb55" />
+
+#### cart Page:
+<img width="1901" height="973" alt="image" src="https://github.com/user-attachments/assets/5d7b1d06-e009-4f79-b53b-3c759d15b764" />
+
+#### Payment Page:
+<img width="1919" height="891" alt="image" src="https://github.com/user-attachments/assets/7a50cce8-c004-4e7d-89f8-5c02df4e3039" />
+
+
 
