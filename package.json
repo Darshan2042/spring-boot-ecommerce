@@ -1,0 +1,11 @@
+{
+  "name": "spring-boot-ecommerce",
+  "version": "1.0.0",
+  "description": "Spring Boot Ecommerce Application",
+  "engines": {
+    "node": "18.x"
+  },
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build && cd .."
+  }
+}
