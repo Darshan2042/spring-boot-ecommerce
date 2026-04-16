@@ -385,8 +385,4 @@ This project is licensed under the MIT License - see LICENSE file for details.
 - Stripe for payment processing
 - All contributors and supporters
 
----
-
-**Made with ❤️ by Darshan Patel**
-
 Last Updated: April 2026
