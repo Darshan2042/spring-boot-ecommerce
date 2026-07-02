@@ -166,13 +166,15 @@ A full-stack e-commerce application built with React and Spring Boot, featuring 
 ## Screen Shots
 
 #### Home Page:
-<img width="1903" height="971" alt="image" src="https://github.com/user-attachments/assets/6efade29-dfd1-4e88-81f6-b7f583f4d1e3" />
+<img width="1917" height="968" alt="image" src="https://github.com/user-attachments/assets/2cc8a7df-8899-4375-b892-25aac71486e6" />
 
 #### Customer Login Page:
-<img width="1919" height="970" alt="image" src="https://github.com/user-attachments/assets/f65f1827-6f31-438c-b8b7-6f079d061f29" />
+<img width="1917" height="970" alt="image" src="https://github.com/user-attachments/assets/9718edee-07e2-4cca-a915-3d28ba625165" />
+<img width="1917" height="967" alt="image" src="https://github.com/user-attachments/assets/0c05b4d4-f922-4099-a189-229c3216db0f" />
+
 
 #### Admin Login Page:
-<img width="1919" height="972" alt="image" src="https://github.com/user-attachments/assets/3be1e36c-1e4c-43a4-a0aa-2150aec2d68e" />
+<img width="1917" height="971" alt="image" src="https://github.com/user-attachments/assets/8435bd1e-b7ab-4af7-8db8-43c3cf8ac171" />
 
 #### Admin Dashboard:
 <img width="1898" height="969" alt="image" src="https://github.com/user-attachments/assets/bd7f2629-5b00-4221-9484-9ccc86da2fc1" />
@@ -185,6 +187,10 @@ A full-stack e-commerce application built with React and Spring Boot, featuring 
 
 #### Payment Page:
 <img width="1919" height="891" alt="image" src="https://github.com/user-attachments/assets/7a50cce8-c004-4e7d-89f8-5c02df4e3039" />
+
+#### Stripe Payment GateWay:
+<img width="1917" height="970" alt="image" src="https://github.com/user-attachments/assets/32f08d67-aa35-4104-86ce-c9398b9cad42" />
+
 
 
 
