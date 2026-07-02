@@ -180,7 +180,7 @@ const CustomerLoginPage = ({ setCurrentPage }) => {
     <div
       style={{
         minHeight: '100vh',
-        background: 'linear-gradient(135deg, #F8FBFD 0%, #EAF4F8 100%)',
+        background: 'linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -223,14 +223,14 @@ const CustomerLoginPage = ({ setCurrentPage }) => {
         ref={containerRef}
         style={{
           position: 'relative',
-          background: theme.colors.backgroundSecondary,
+          background: 'rgba(255,255,255,0.78)',
           borderRadius: theme.borderRadius['2xl'],
-          boxShadow: theme.shadows['2xl'],
+          boxShadow: '0 24px 80px rgba(15,23,42,0.14)',
           overflow: 'hidden',
           backdropFilter: 'blur(10px)',
           width: '100%',
-          maxWidth: '420px',
-          border: `1px solid ${theme.colors.border}`,
+          maxWidth: '520px',
+          border: '1px solid rgba(255,255,255,0.6)',
           animation: 'fadeIn 0.5s ease-out',
           zIndex: 10,
         }}
@@ -238,7 +238,7 @@ const CustomerLoginPage = ({ setCurrentPage }) => {
         {/* Header */}
         <div
           style={{
-            background: `linear-gradient(135deg, #BFD7E3 0%, #8bbcd3 100%)`,
+            background: 'linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)',
             padding: `${theme.spacing.xl} ${theme.spacing.lg}`,
             textAlign: 'center',
             position: 'relative',
@@ -249,18 +249,18 @@ const CustomerLoginPage = ({ setCurrentPage }) => {
             style={{
               fontSize: theme.typography.fontSize['3xl'],
               fontWeight: theme.typography.fontWeight.bold,
-              color: '#1E293B',
+              color: '#FFFFFF',
               marginBottom: theme.spacing.sm,
               position: 'relative',
               zIndex: 2,
             }}
           >
-            🛍️ ShopHub
+            ShopHub
           </h1>
           <p
             style={{
               fontSize: theme.typography.fontSize.sm,
-              color: 'rgba(30, 41, 59, 0.8)',
+              color: 'rgba(255,255,255,0.84)',
               position: 'relative',
               zIndex: 2,
             }}
@@ -277,9 +277,9 @@ const CustomerLoginPage = ({ setCurrentPage }) => {
               style={{
                 marginBottom: theme.spacing.lg,
                 padding: theme.spacing.md,
-                background: `${theme.colors.error}15`,
-                border: `1px solid ${theme.colors.error}`,
-                borderRadius: theme.borderRadius.lg,
+                background: `${theme.colors.error}12`,
+                border: `1px solid ${theme.colors.error}30`,
+                borderRadius: theme.borderRadius.xl,
                 color: theme.colors.error,
                 fontSize: theme.typography.fontSize.sm,
                 fontWeight: theme.typography.fontWeight.medium,
@@ -626,10 +626,12 @@ const CustomerLoginPage = ({ setCurrentPage }) => {
               style={{
                 width: '100%',
                 marginTop: theme.spacing.lg,
-                background: `linear-gradient(135deg, #BFD7E3 0%, #8bbcd3 100%)`,
-                color: '#1E293B',
+                  background: 'linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)',
+                  color: '#FFFFFF',
                 fontWeight: 'bold',
-                border: 'none',
+                  border: 'none',
+                  borderRadius: theme.borderRadius.full,
+                  boxShadow: '0 14px 30px rgba(37,99,235,0.25)',
               }}
             >
               {loading ? '⏳ Loading...' : form.isLogin ? '🔓 Sign In' : '✨ Create Account'}

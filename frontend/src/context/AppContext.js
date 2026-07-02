@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
+import { toast } from 'react-toastify';
 import { apiService } from '../services/apiService';
 
 const AppContext = createContext();
@@ -57,6 +58,23 @@ export const AppProvider = ({ children }) => {
 
   const showNotification = useCallback((message, type = 'success', duration = 3000) => {
     setNotification({ message, type });
+    const toastOptions = {
+      autoClose: duration,
+      position: 'top-right',
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    };
+
+    const mappedType = {
+      success: toast.success,
+      error: toast.error,
+      warning: toast.warn,
+      info: toast.info,
+    }[type] || toast;
+
+    mappedType(message, toastOptions);
     setTimeout(() => setNotification(null), duration);
   }, []);
 

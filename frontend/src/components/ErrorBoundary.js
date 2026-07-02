@@ -1,4 +1,5 @@
 import React from 'react';
+import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
 
 /**
  * Error Boundary - Catches errors in child components and displays fallback UI
@@ -37,39 +38,41 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4" style={{ paddingTop: '80px' }}>
-          <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
-            <div className="text-center">
-              <div className="text-6xl mb-4">⚠️</div>
-              <h1 className="text-3xl font-bold text-red-600 mb-4">Something went wrong</h1>
-              <p className="text-gray-600 mb-6">
-                We encountered an unexpected error. Please try refreshing the page or going back to home.
-              </p>
+        <div className="flex min-h-screen items-center justify-center px-4 py-10">
+          <div className="glass-panel w-full max-w-lg rounded-[28px] p-8 text-center">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-50 text-red-600">
+              <AlertTriangle className="h-8 w-8" />
+            </div>
+            <h1 className="mb-3 text-3xl font-bold text-slate-900">Something went wrong</h1>
+            <p className="mb-6 text-slate-500">
+              We encountered an unexpected error. You can retry or return to the home page.
+            </p>
 
               {process.env.NODE_ENV === 'development' && (
-                <div className="bg-red-50 border border-red-200 rounded p-4 mb-6 text-left">
-                  <h3 className="font-bold text-red-800 mb-2">Error Details (Development Only):</h3>
-                  <pre className="text-xs text-red-700 overflow-auto max-h-40">
+                <div className="mb-6 rounded-2xl border border-red-200 bg-red-50 p-4 text-left">
+                  <h3 className="mb-2 font-bold text-red-800">Error Details (Development Only)</h3>
+                  <pre className="max-h-40 overflow-auto text-xs text-red-700">
                     {this.state.error && this.state.error.toString()}
                     {this.state.errorInfo && '\n\n' + this.state.errorInfo.componentStack}
                   </pre>
                 </div>
               )}
 
-              <div className="flex gap-4">
-                <button
-                  onClick={this.resetError}
-                  className="flex-1 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition font-semibold"
-                >
-                  Try Again
-                </button>
-                <a
-                  href="/"
-                  className="flex-1 bg-gray-300 text-gray-900 px-4 py-2 rounded hover:bg-gray-400 transition font-semibold text-center"
-                >
-                  Go Home
-                </a>
-              </div>
+            <div className="flex gap-3">
+              <button
+                onClick={this.resetError}
+                className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-3 font-semibold text-white shadow-lg transition hover:scale-[1.02]"
+              >
+                <RefreshCw className="h-4 w-4" />
+                Try Again
+              </button>
+              <a
+                href="/"
+                className="flex flex-1 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-3 font-semibold text-slate-900 transition hover:scale-[1.02]"
+              >
+                <Home className="h-4 w-4" />
+                Go Home
+              </a>
             </div>
           </div>
         </div>

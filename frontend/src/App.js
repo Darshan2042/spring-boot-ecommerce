@@ -1,10 +1,12 @@
 import React, { useState, useCallback, useMemo, Suspense, lazy, useTransition } from 'react';
+import { ToastContainer } from 'react-toastify';
 import ModernNavbar from './components/ModernNavbar';
-import Notification from './components/Notification';
 import ErrorBoundary from './components/ErrorBoundary';
 import LoadingSpinner from './components/LoadingSpinner';
+import PageTransition from './components/PageTransition';
 import { useAppContext } from './context/AppContext';
 import theme from './styles/theme';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -102,7 +104,7 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #F8FBFD 0%, #EAF4F8 100%)', backgroundAttachment: 'fixed', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ minHeight: '100vh', background: theme.gradients.secondary, backgroundAttachment: 'fixed', display: 'flex', flexDirection: 'column' }}>
         {/* Hide navbar on login pages */}
         {!['customerLogin', 'adminLogin'].includes(currentPage) && (
           <ModernNavbar currentPage={currentPage} setCurrentPage={handlePageChange} />
@@ -116,11 +118,21 @@ function App() {
               transition: `all ${theme.transitions.normal}`,
             }}
           >
-            {pageContent}
+            <PageTransition pageKey={currentPage}>{pageContent}</PageTransition>
           </main>
         </Suspense>
         
-        <Notification />
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          newestOnTop
+          closeOnClick
+          pauseOnFocusLoss={false}
+          pauseOnHover
+          theme="light"
+          toastClassName="!rounded-2xl !shadow-xl !border !border-slate-200"
+          progressClassName="!bg-blue-600"
+        />
       </div>
     </ErrorBoundary>
   );

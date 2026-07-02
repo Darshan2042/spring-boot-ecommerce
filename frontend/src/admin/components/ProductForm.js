@@ -10,34 +10,34 @@ const ProductForm = ({
   categories 
 }) => {
   return (
-    <div className="bg-white rounded-lg shadow p-8 max-w-2xl">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">
+    <div className="glass-panel max-w-2xl rounded-[28px] p-8">
+      <h2 className="mb-6 text-2xl font-bold text-slate-900">
         {editingProduct ? 'Edit Product' : 'Add New Product'}
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-gray-700 font-semibold mb-2">Product SKU *</label>
+            <label className="premium-label">Product SKU *</label>
             <input
               type="text"
               name="sku"
               value={formData.sku}
               onChange={handleInputChange}
               placeholder="Enter SKU (e.g., PROD-001)"
-              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+              className="premium-input"
               required
               disabled={loading}
             />
           </div>
 
           <div>
-            <label className="block text-gray-700 font-semibold mb-2">Category *</label>
+            <label className="premium-label">Category *</label>
             <select
               name="categoryId"
               value={formData.categoryId}
               onChange={handleInputChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+              className="premium-input"
               required
               disabled={loading}
             >
@@ -52,35 +52,35 @@ const ProductForm = ({
         </div>
 
         <div>
-          <label className="block text-gray-700 font-semibold mb-2">Product Name *</label>
+          <label className="premium-label">Product Name *</label>
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleInputChange}
             placeholder="Enter product name"
-            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+            className="premium-input"
             required
             disabled={loading}
           />
         </div>
 
         <div>
-          <label className="block text-gray-700 font-semibold mb-2">Description</label>
+          <label className="premium-label">Description</label>
           <textarea
             name="description"
             value={formData.description}
             onChange={handleInputChange}
             placeholder="Enter product description"
             rows="4"
-            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+            className="premium-input"
             disabled={loading}
           ></textarea>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label className="block text-gray-700 font-semibold mb-2">Unit Price *</label>
+            <label className="premium-label">Unit Price *</label>
             <input
               type="number"
               name="unitPrice"
@@ -89,14 +89,14 @@ const ProductForm = ({
               placeholder="0.00"
               step="0.01"
               min="0"
-              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+              className="premium-input"
               required
               disabled={loading}
             />
           </div>
 
           <div>
-            <label className="block text-gray-700 font-semibold mb-2">Stock Quantity *</label>
+            <label className="premium-label">Stock Quantity *</label>
             <input
               type="number"
               name="unitsInStock"
@@ -104,19 +104,19 @@ const ProductForm = ({
               onChange={handleInputChange}
               placeholder="0"
               min="0"
-              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+              className="premium-input"
               required
               disabled={loading}
             />
           </div>
 
           <div>
-            <label className="block text-gray-700 font-semibold mb-2">Status</label>
+            <label className="premium-label">Status</label>
             <select
               name="active"
               value={formData.active}
               onChange={(e) => handleInputChange({ target: { name: 'active', value: e.target.value === 'true' } })}
-              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+              className="premium-input"
               disabled={loading}
             >
               <option value={true}>Active</option>
@@ -126,14 +126,14 @@ const ProductForm = ({
         </div>
 
         <div>
-          <label className="block text-gray-700 font-semibold mb-2">Image URL</label>
+          <label className="premium-label">Image URL</label>
           <input
             type="url"
             name="imageUrl"
             value={formData.imageUrl}
             onChange={handleInputChange}
             placeholder="https://example.com/image.jpg"
-            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+            className="premium-input"
             disabled={loading}
           />
           {formData.imageUrl && (
@@ -153,14 +153,14 @@ const ProductForm = ({
           <button
             type="submit"
             disabled={loading}
-            className="flex-1 bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition font-bold disabled:bg-gray-400"
+            className="flex-1 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 font-semibold text-white shadow-lg transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-50"
           >
             {loading ? 'Saving...' : editingProduct ? 'Update Product' : 'Add Product'}
           </button>
           <button
             type="button"
             onClick={resetForm}
-            className="flex-1 bg-gray-300 text-gray-900 px-6 py-3 rounded-lg hover:bg-gray-400 transition font-bold"
+            className="flex-1 rounded-full border border-slate-200 bg-white px-6 py-3 font-semibold text-slate-900 transition hover:bg-slate-50"
           >
             Cancel
           </button>

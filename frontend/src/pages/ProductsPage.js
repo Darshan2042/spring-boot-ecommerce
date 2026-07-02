@@ -11,7 +11,7 @@ import AnimatedCard from '../components/AnimatedCard';
 import AnimatedButton from '../components/AnimatedButton';
 
 const ProductsPage = () => {
-  const { addToCart, cart, productRefreshTrigger } = useAppContext();
+  const { addToCart, productRefreshTrigger } = useAppContext();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -108,21 +108,21 @@ const ProductsPage = () => {
       key={product.id}
       index={index}
       delay={0.05}
-      className="p-4 flex flex-col h-full overflow-hidden"
+      className="flex h-full flex-col overflow-hidden rounded-[28px] border border-slate-200/80 bg-white/80 p-4 shadow-[0_10px_30px_rgba(15,23,42,0.08)] backdrop-blur"
     >
       {/* Image */}
       <motion.div
-        style={{ position: 'relative', height: '200px', background: '#f5f5f5', borderRadius: '8px' }}
-        whileHover={{ scale: 1.05 }}
+        style={{ position: 'relative', height: '220px', background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)', borderRadius: '22px' }}
+        whileHover={{ scale: 1.03 }}
         transition={{ duration: 0.3 }}
       >
         <img
           src={getProductImageUrl(product)}
           alt={product.name}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '22px' }}
         />
 
-        <div style={{ position: 'absolute', top: 10, right: 10 }}>
+        <div style={{ position: 'absolute', top: 12, right: 12 }}>
           {product.active ? (
             <Badge variant="success">In Stock</Badge>
           ) : (
@@ -142,7 +142,7 @@ const ProductsPage = () => {
         }}
       >
         <motion.h3
-          style={{ fontSize: '18px', fontWeight: '600', margin: 0 }}
+          style={{ fontSize: '18px', fontWeight: '700', margin: 0, color: theme.colors.text }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
@@ -153,7 +153,7 @@ const ProductsPage = () => {
         <motion.p
           style={{
             fontSize: '14px',
-            color: '#4B5563',
+            color: theme.colors.textSecondary,
             lineHeight: '1.6',
             display: '-webkit-box',
             WebkitLineClamp: 3,
@@ -169,7 +169,7 @@ const ProductsPage = () => {
         </motion.p>
 
         <motion.div
-          style={{ fontSize: '20px', fontWeight: '700', color: '#2563eb' }}
+          style={{ fontSize: '20px', fontWeight: '800', color: theme.colors.primaryDark }}
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: 'spring', stiffness: 200, delay: 0.3 }}
@@ -181,7 +181,7 @@ const ProductsPage = () => {
           onClick={() => handleAddToCart(product)}
           disabled={!product.active}
           variant={addedProduct === product.id ? 'success' : 'primary'}
-          className="w-full mt-2"
+          className="mt-2 w-full"
         >
           {addedProduct === product.id ? '✔ Added' : 'Add to Cart'}
         </AnimatedButton>
@@ -191,7 +191,7 @@ const ProductsPage = () => {
 
   return (
     <Layout title="Products" subtitle="Browse our collection">
-      <Section spacing="xl">
+      <Section spacing="xl" className="space-y-6">
 
         {/* ✅ FIXED FILTER UI */}
         <motion.div
@@ -209,7 +209,7 @@ const ProductsPage = () => {
           >
             {/* Category */}
             <div style={{ flex: 1, minWidth: '220px' }}>
-              <label style={{ fontSize: '13px', marginBottom: '6px', display: 'block' }}>
+              <label style={{ fontSize: '13px', marginBottom: '6px', display: 'block', color: theme.colors.textSecondary, fontWeight: 600 }}>
                 Category
               </label>
               <motion.select
@@ -218,10 +218,11 @@ const ProductsPage = () => {
                 onChange={(e) => setSelectedCategory(e.target.value)}
                 style={{
                   width: '100%',
-                  height: '42px',
-                  padding: '0 12px',
-                  borderRadius: '8px',
-                  border: '1px solid #ddd',
+                  height: '48px',
+                  padding: '0 16px',
+                  borderRadius: '16px',
+                  border: `1px solid ${theme.colors.border}`,
+                  background: 'rgba(255,255,255,0.85)',
                 }}
               >
                 <option value="">All Categories</option>
@@ -235,7 +236,7 @@ const ProductsPage = () => {
 
             {/* Search */}
             <div style={{ flex: 2, minWidth: '260px' }}>
-              <label style={{ fontSize: '13px', marginBottom: '6px', display: 'block' }}>
+              <label style={{ fontSize: '13px', marginBottom: '6px', display: 'block', color: theme.colors.textSecondary, fontWeight: 600 }}>
                 Search
               </label>
               <motion.input
@@ -245,10 +246,11 @@ const ProductsPage = () => {
                 onChange={(e) => setFilterText(e.target.value)}
                 style={{
                   width: '100%',
-                  height: '42px',
-                  borderRadius: '8px',
-                  border: '1px solid #ddd',
-                  padding: '0 12px',
+                  height: '48px',
+                  borderRadius: '16px',
+                  border: `1px solid ${theme.colors.border}`,
+                  padding: '0 16px',
+                  background: 'rgba(255,255,255,0.85)',
                 }}
               />
             </div>
@@ -272,7 +274,7 @@ const ProductsPage = () => {
           <motion.p
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            style={{ color: 'red' }}
+            style={{ color: theme.colors.error, fontWeight: 600 }}
           >
             {error}
           </motion.p>
@@ -310,7 +312,7 @@ const ProductsPage = () => {
             transition={{ duration: 0.4 }}
             style={{ textAlign: 'center', padding: '60px 20px' }}
           >
-            <p style={{ fontSize: '18px', color: '#999' }}>No products found. Try different filters!</p>
+            <p style={{ fontSize: '18px', color: theme.colors.textSecondary }}>No products found. Try different filters!</p>
           </motion.div>
         )}
       </Section>

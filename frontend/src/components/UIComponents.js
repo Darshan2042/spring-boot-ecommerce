@@ -19,17 +19,17 @@ export const Button = ({
   ...props
 }) => {
   const getButtonStyle = () => {
-    let bgColor = theme.colors.primary;
+    let bgColor = theme.gradients.primary;
     let textColor = 'white';
     let border = 'none';
 
     switch (variant) {
       case 'primary':
-        bgColor = `linear-gradient(135deg, ${theme.colors.primary} 0%, ${theme.colors.primaryLight} 100%)`;
-        textColor = theme.colors.gray800;
+        bgColor = theme.gradients.primary;
+        textColor = 'white';
         break;
       case 'secondary':
-        bgColor = 'white';
+        bgColor = theme.gradients.glass;
         textColor = theme.colors.gray800;
         break;
       case 'outline':
@@ -38,7 +38,7 @@ export const Button = ({
         border = `2px solid ${theme.colors.primary}`;
         break;
       case 'danger':
-        bgColor = `linear-gradient(135deg, ${theme.colors.error} 0%, ${theme.colors.error}80 100%)`;
+        bgColor = theme.gradients.danger;
         textColor = 'white';
         break;
       default:
@@ -71,11 +71,12 @@ export const Button = ({
       alignItems: 'center',
       justifyContent: 'center',
       gap: theme.spacing.sm,
+      letterSpacing: '0.01em',
       width: fullWidth ? '100%' : 'auto',
       opacity: disabled || loading ? 0.6 : 1,
       cursor: disabled || loading ? 'not-allowed' : 'pointer',
-      boxShadow: disabled ? 'none' : theme.shadows.sm,
-      transition: 'background 0.3s ease, border 0.3s ease, color 0.3s ease',
+      boxShadow: disabled ? 'none' : theme.shadows.md,
+      transition: 'background 0.3s ease, border 0.3s ease, color 0.3s ease, transform 0.3s ease',
     };
   };
 
@@ -84,7 +85,7 @@ export const Button = ({
       disabled={disabled || loading}
       style={getButtonStyle()}
       className={className}
-      whileHover={disabled ? {} : { scale: 1.02, y: -2, boxShadow: theme.shadows.lg }}
+      whileHover={disabled ? {} : { scale: 1.03, y: -2, boxShadow: theme.shadows.lg }}
       whileTap={disabled ? {} : { scale: 0.98, y: 0, boxShadow: theme.shadows.sm }}
       transition={{ duration: 0.2 }}
       {...props}
@@ -102,17 +103,17 @@ export const Button = ({
 export const Card = ({ children, className = '', variant = 'default', ...props }) => {
   const variants = {
     default: {
-      background: theme.colors.backgroundSecondary,
-      border: `1px solid ${theme.colors.border}`,
-      boxShadow: theme.shadows.sm,
+    background: 'rgba(255,255,255,0.82)',
+    border: `1px solid ${theme.colors.border}`,
+    boxShadow: theme.shadows.md,
     },
     elevated: {
-      background: theme.colors.backgroundSecondary,
-      border: 'none',
-      boxShadow: theme.shadows.lg,
+    background: 'rgba(255,255,255,0.9)',
+    border: `1px solid rgba(255,255,255,0.8)`,
+    boxShadow: theme.shadows.lg,
     },
     bordered: {
-      background: theme.colors.backgroundSecondary,
+    background: 'rgba(255,255,255,0.82)',
       border: `2px solid ${theme.colors.primary}`,
       boxShadow: 'none',
     },
@@ -123,7 +124,7 @@ export const Card = ({ children, className = '', variant = 'default', ...props }
       whileHover={{ y: -5, boxShadow: theme.shadows.xl }}
       transition={{ duration: 0.3 }}
       style={{
-        borderRadius: theme.borderRadius.lg,
+        borderRadius: theme.borderRadius['2xl'],
         padding: theme.spacing.lg,
         ...variants[variant],
       }}
@@ -163,12 +164,11 @@ export const Input = ({
         </label>
       )}
       <motion.div 
-        style={{ position: 'relative', display: 'flex', alignItems: 'center' }}
+        style={{ position: 'relative', display: 'flex', alignItems: 'center', borderRadius: theme.borderRadius.lg }}
         animate={{
           boxShadow: isFocused ? `0 0 0 3px ${theme.colors.primaryLight}` : '0 0 0 0px transparent',
         }}
         transition={{ duration: 0.2 }}
-        style={{ borderRadius: theme.borderRadius.lg }}
       >
         {icon && (
           <span
@@ -194,7 +194,7 @@ export const Input = ({
             borderRadius: theme.borderRadius.lg,
             background: disabled ? theme.colors.gray100 : theme.colors.backgroundSecondary,
             color: theme.colors.text,
-            transition: 'border-color 0.2s',
+            transition: 'border-color 0.2s, box-shadow 0.2s, transform 0.2s',
             outline: 'none',
           }}
           disabled={disabled}
@@ -231,19 +231,19 @@ export const Input = ({
 export const Badge = ({ children, variant = 'primary', className = '' }) => {
   const variants = {
     primary: {
-      background: `${theme.colors.primary}20`,
-      color: theme.colors.primary,
+    background: `${theme.colors.primary}12`,
+    color: theme.colors.primaryDark,
     },
     success: {
-      background: `${theme.colors.success}20`,
+    background: `${theme.colors.success}18`,
       color: theme.colors.success,
     },
     error: {
-      background: `${theme.colors.error}20`,
+    background: `${theme.colors.error}18`,
       color: theme.colors.error,
     },
     warning: {
-      background: `${theme.colors.warning}20`,
+    background: `${theme.colors.warning}18`,
       color: theme.colors.warning,
     },
   };
@@ -256,6 +256,7 @@ export const Badge = ({ children, variant = 'primary', className = '' }) => {
         borderRadius: theme.borderRadius.full,
         fontSize: theme.typography.fontSize.xs,
         fontWeight: theme.typography.fontWeight.semibold,
+        letterSpacing: '0.04em',
         ...variants[variant],
       }}
       className={className}

@@ -1,19 +1,21 @@
 export const theme = {
-  // CLEAN PROFESSIONAL COLOR PALETTE
+  // Premium e-commerce palette
   colors: {
-    primary: '#BFD7E3',        // Soft blue tone
-    primaryDark: '#a1c2d3',
-    primaryLight: '#e6f2f8',
+    primary: '#2563EB',
+    primaryDark: '#1D4ED8',
+    primaryLight: '#DBEAFE',
 
-    secondary: '#8bbcd3',      // Darker variation for accents
-    secondaryDark: '#6ea6c1',
-    secondaryLight: '#d4e6ef',
+    secondary: '#0F172A',
+    secondaryDark: '#020617',
+    secondaryLight: '#1E293B',
+
+    accent: '#14B8A6',
 
     // Semantic Colors
-    success: '#10B981',
+    success: '#22C55E',
     error: '#EF4444',
     warning: '#F59E0B',
-    info: '#3B82F6',
+    info: '#2563EB',
 
     // Neutral Colors
     white: '#FFFFFF',
@@ -30,9 +32,9 @@ export const theme = {
     gray900: '#0F172A',
 
     // Background & Text
-    background: '#f4f8fa',
+    background: '#F8FAFC',
     backgroundSecondary: '#FFFFFF',
-    text: '#1E293B',
+    text: '#0F172A',
     textSecondary: '#64748B',
     textLight: '#94A3B8',
     border: '#E2E8F0',
@@ -116,8 +118,8 @@ export const theme = {
 
   // TRANSITIONS (slightly smoother)
   transitions: {
-    fast: '150ms ease',
-    normal: '250ms ease',
+    fast: '180ms ease',
+    normal: '260ms ease',
     slow: '400ms ease',
   },
 
@@ -148,10 +150,11 @@ export const theme = {
 
   // 🔥 CLEAN SUBTLE GRADIENTS (NO FLASHY COLORS)
   gradients: {
-    primary: 'linear-gradient(135deg, #BFD7E3 0%, #e6f2f8 100%)',
-    secondary: 'linear-gradient(135deg, #f4f8fa 0%, #BFD7E3 100%)',
-    success: 'linear-gradient(135deg, #10B981 0%, #34D399 100%)',
-    danger: 'linear-gradient(135deg, #EF4444 0%, #F87171 100%)',
+    primary: 'linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)',
+    secondary: 'linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%)',
+    glass: 'linear-gradient(135deg, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.46) 100%)',
+    success: 'linear-gradient(135deg, #22C55E 0%, #16A34A 100%)',
+    danger: 'linear-gradient(135deg, #EF4444 0%, #DC2626 100%)',
   },
 };
 

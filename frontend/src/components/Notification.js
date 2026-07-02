@@ -15,7 +15,7 @@ const Notification = () => {
 
   return (
     <div
-      className={`${bgColor} text-white px-6 py-3 rounded shadow-lg fixed top-4 right-4 z-50 animate-slideUp`}
+      className={`${bgColor} text-white px-6 py-3 rounded-2xl shadow-lg fixed top-4 right-4 z-50 animate-slideUp`}
     >
       {notification.message}
     </div>

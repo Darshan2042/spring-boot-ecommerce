@@ -75,26 +75,29 @@ const CheckoutPage = ({ setCurrentPage }) => {
 
   return (
     <Elements stripe={stripePromise}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fadeIn">
-        <h2 className="text-4xl font-bold text-gray-900 mb-8">Checkout</h2>
+      <div className="mx-auto max-w-[1400px] px-4 py-6 sm:px-6 lg:px-8">
+        <div className="glass-panel mb-6 rounded-[28px] p-6">
+          <h2 className="text-4xl font-bold tracking-tight text-slate-900">Checkout</h2>
+          <p className="mt-2 text-slate-500">Complete your order in a calm, guided flow.</p>
+        </div>
 
         {cart.length === 0 ? (
-          <div className="bg-white rounded-lg shadow p-8 text-center">
-            <p className="text-gray-600 mb-6 text-lg">Your cart is empty</p>
+          <div className="glass-panel rounded-[28px] p-10 text-center">
+            <p className="mb-6 text-lg text-slate-600">Your cart is empty</p>
             <button
               onClick={() => setCurrentPage('products')}
-              className="bg-indigo-600 text-white px-6 py-3 rounded hover:bg-indigo-700 transition"
+              className="rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 font-semibold text-white shadow-lg transition hover:scale-[1.02]"
             >
               Continue Shopping
             </button>
           </div>
         ) : !showPaymentForm ? (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
             {/* Checkout Form */}
             <div className="lg:col-span-2">
-              <div className="bg-white rounded-lg shadow p-6">
+              <div className="glass-panel rounded-[28px] p-6 sm:p-8">
                 {/* Personal Information */}
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Personal Information</h3>
+                <h3 className="mb-6 text-2xl font-bold text-slate-900">Personal Information</h3>
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <input
                     type="text"
@@ -102,7 +105,7 @@ const CheckoutPage = ({ setCurrentPage }) => {
                     placeholder="First Name"
                     value={formData.firstName}
                     onChange={handleInputChange}
-                    className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                    className="premium-input"
                   />
                   <input
                     type="text"
@@ -110,7 +113,7 @@ const CheckoutPage = ({ setCurrentPage }) => {
                     placeholder="Last Name"
                     value={formData.lastName}
                     onChange={handleInputChange}
-                    className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                    className="premium-input"
                   />
                 </div>
                 <input
@@ -119,18 +122,18 @@ const CheckoutPage = ({ setCurrentPage }) => {
                   placeholder="Email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500 mb-6"
+                  className="premium-input mb-6"
                 />
 
                 {/* Billing Address */}
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Billing Address</h3>
+                <h3 className="mb-6 text-2xl font-bold text-slate-900">Billing Address</h3>
                 <input
                   type="text"
                   name="billingAddress"
                   placeholder="Street Address"
                   value={formData.billingAddress}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500 mb-4"
+                  className="premium-input mb-4"
                 />
                 <div className="grid grid-cols-3 gap-4 mb-6">
                   <input
@@ -139,7 +142,7 @@ const CheckoutPage = ({ setCurrentPage }) => {
                     placeholder="City"
                     value={formData.billingCity}
                     onChange={handleInputChange}
-                    className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                    className="premium-input"
                   />
                   <input
                     type="text"
@@ -147,7 +150,7 @@ const CheckoutPage = ({ setCurrentPage }) => {
                     placeholder="State"
                     value={formData.billingState}
                     onChange={handleInputChange}
-                    className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                    className="premium-input"
                   />
                   <input
                     type="text"
@@ -155,34 +158,34 @@ const CheckoutPage = ({ setCurrentPage }) => {
                     placeholder="ZIP Code"
                     value={formData.billingZip}
                     onChange={handleInputChange}
-                    className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                    className="premium-input"
                   />
                 </div>
 
                 {/* Shipping Address */}
-                <div className="mb-6">
-                  <label className="flex items-center">
+                <div className="mb-6 rounded-2xl border border-slate-200/80 bg-white/60 p-4">
+                  <label className="flex items-center gap-3 text-slate-700">
                     <input
                       type="checkbox"
                       name="sameAsShipping"
                       checked={formData.sameAsShipping}
                       onChange={handleInputChange}
-                      className="mr-2"
+                      className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
                     />
-                    <span className="text-gray-700">Shipping address same as billing</span>
+                    <span>Shipping address same as billing</span>
                   </label>
                 </div>
 
                 {!formData.sameAsShipping && (
                   <>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-6">Shipping Address</h3>
+                    <h3 className="mb-6 text-2xl font-bold text-slate-900">Shipping Address</h3>
                     <input
                       type="text"
                       name="shippingAddress"
                       placeholder="Street Address"
                       value={formData.shippingAddress}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500 mb-4"
+                      className="premium-input mb-4"
                     />
                     <div className="grid grid-cols-3 gap-4 mb-6">
                       <input
@@ -191,7 +194,7 @@ const CheckoutPage = ({ setCurrentPage }) => {
                         placeholder="City"
                         value={formData.shippingCity}
                         onChange={handleInputChange}
-                        className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                        className="premium-input"
                       />
                       <input
                         type="text"
@@ -199,7 +202,7 @@ const CheckoutPage = ({ setCurrentPage }) => {
                         placeholder="State"
                         value={formData.shippingState}
                         onChange={handleInputChange}
-                        className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                        className="premium-input"
                       />
                       <input
                         type="text"
@@ -207,7 +210,7 @@ const CheckoutPage = ({ setCurrentPage }) => {
                         placeholder="ZIP Code"
                         value={formData.shippingZip}
                         onChange={handleInputChange}
-                        className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                        className="premium-input"
                       />
                     </div>
                   </>
@@ -216,39 +219,39 @@ const CheckoutPage = ({ setCurrentPage }) => {
             </div>
 
             {/* Order Summary */}
-            <div className="bg-white rounded-lg shadow p-6 h-fit">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Order Summary</h3>
+            <div className="glass-panel h-fit rounded-[28px] p-6">
+              <h3 className="mb-6 text-2xl font-bold text-slate-900">Order Summary</h3>
 
-              <div className="space-y-3 mb-6 max-h-64 overflow-y-auto">
+              <div className="mb-6 max-h-64 space-y-3 overflow-y-auto pr-1">
                 {cart.map((item) => (
-                  <div key={item.productId} className="flex justify-between py-2 border-b">
+                  <div key={item.productId} className="flex justify-between rounded-2xl border-b border-slate-100 py-3">
                     <div>
-                      <p className="font-medium text-gray-900">{item.productName}</p>
-                      <p className="text-sm text-gray-600">x{item.quantity}</p>
+                      <p className="font-medium text-slate-900">{item.productName}</p>
+                      <p className="text-sm text-slate-500">x{item.quantity}</p>
                     </div>
-                    <p className="font-semibold text-gray-900">
+                    <p className="font-semibold text-slate-900">
                       {formatINR((parseFloat(item?.price) || 0) * (item?.quantity || 0))}
                     </p>
                   </div>
                 ))}
               </div>
 
-              <div className="space-y-3 mb-6 border-t-2 pt-4">
+              <div className="mb-6 space-y-3 border-t border-slate-200 pt-4">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Subtotal:</span>
+                  <span className="text-slate-500">Subtotal:</span>
                   <span className="font-medium">{formatINR(subtotal)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Shipping:</span>
+                  <span className="text-slate-500">Shipping:</span>
                   <span className="font-medium">{formatINR(shipping)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Tax (8%):</span>
+                  <span className="text-slate-500">Tax (8%):</span>
                   <span className="font-medium">{formatINR(tax)}</span>
                 </div>
-                <div className="border-t-2 border-gray-200 pt-3 flex justify-between">
-                  <span className="text-xl font-bold text-gray-900">Total:</span>
-                  <span className="text-2xl font-bold text-indigo-600">
+                <div className="flex justify-between border-t border-slate-200 pt-3">
+                  <span className="text-xl font-bold text-slate-900">Total:</span>
+                  <span className="text-2xl font-bold text-blue-600">
                     {formatINR(total)}
                   </span>
                 </div>
@@ -256,14 +259,14 @@ const CheckoutPage = ({ setCurrentPage }) => {
 
               <button
                 onClick={handleContinueToPayment}
-                className="w-full bg-indigo-600 text-white py-3 rounded-lg font-bold hover:bg-indigo-700 transition"
+                className="w-full rounded-full bg-gradient-to-r from-blue-600 to-blue-700 py-3.5 font-semibold text-white shadow-lg transition hover:scale-[1.01]"
               >
                 Continue to Payment
               </button>
 
               <button
                 onClick={() => setCurrentPage('cart')}
-                className="w-full bg-gray-200 text-gray-900 py-3 rounded-lg font-bold hover:bg-gray-300 transition mt-4"
+                className="mt-4 w-full rounded-full border border-slate-200 bg-white py-3.5 font-semibold text-slate-900 transition hover:bg-slate-50"
               >
                 Back to Cart
               </button>
@@ -303,7 +306,7 @@ const PaymentForm = ({
 }) => {
   const stripe = useStripe();
   const elements = useElements();
-  const { currentUser, showNotification } = useAppContext();
+  const { showNotification } = useAppContext();
   const [clientSecret, setClientSecret] = useState(null);
   const [orderId, setOrderId] = useState(null);
 

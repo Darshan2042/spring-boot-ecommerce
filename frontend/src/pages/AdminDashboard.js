@@ -241,36 +241,36 @@ const AdminDashboard = ({ setCurrentPage }) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#F8FBFD] to-[#EAF4F8]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="mx-auto max-w-[1400px] px-4 py-6 sm:px-6 lg:px-8">
         {/* Debug Info */}
         {/* <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded">
           <p className="text-sm text-blue-900"><strong>Debug Info:</strong> User: {currentUser?.username}, Roles: {JSON.stringify(currentUser?.roles)}, Total Products: {products.length}</p>
         </div> */}
 
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900">Admin Dashboard</h1>
-          <p className="text-gray-600 mt-2">Welcome, <span className="font-semibold">{currentUser?.username}</span>! Manage products and view orders.</p>
+        <div className="glass-panel mb-8 rounded-[28px] p-6">
+          <h1 className="text-4xl font-bold tracking-tight text-slate-900">Admin Dashboard</h1>
+          <p className="mt-2 text-slate-600">Welcome, <span className="font-semibold text-slate-900">{currentUser?.username}</span>! Manage products and view orders.</p>
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-4 mb-8 border-b border-gray-200">
+        <div className="mb-8 flex gap-3 rounded-[28px] border border-slate-200/80 bg-white/70 p-2 shadow-sm backdrop-blur">
           <button
             onClick={() => setActiveTab('products')}
-            className={`px-6 py-3 font-semibold ${
+            className={`rounded-2xl px-6 py-3 font-semibold transition ${
               activeTab === 'products'
-                ? 'text-indigo-600 border-b-2 border-indigo-600'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'bg-slate-900 text-white shadow-lg'
+                : 'text-slate-600 hover:bg-white hover:text-slate-900'
             }`}
           >
             Products Management
           </button>
           <button
             onClick={() => setActiveTab('orders')}
-            className={`px-6 py-3 font-semibold ${
+            className={`rounded-2xl px-6 py-3 font-semibold transition ${
               activeTab === 'orders'
-                ? 'text-indigo-600 border-b-2 border-indigo-600'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'bg-slate-900 text-white shadow-lg'
+                : 'text-slate-600 hover:bg-white hover:text-slate-900'
             }`}
           >
             Orders ({orders.length})
@@ -285,7 +285,7 @@ const AdminDashboard = ({ setCurrentPage }) => {
                 {/* Add Product Button */}
                 <button
                   onClick={() => setShowProductForm(true)}
-                  className="mb-6 bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition font-semibold"
+                  className="mb-6 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 font-semibold text-white shadow-lg transition hover:scale-[1.01]"
                 >
                   + Add New Product
                 </button>
@@ -297,12 +297,12 @@ const AdminDashboard = ({ setCurrentPage }) => {
                     <p className="text-center text-gray-600 mt-4">Loading products...</p>
                   </div>
                 ) : products.length === 0 ? (
-                  <div className="text-center py-12 bg-white rounded-lg border-2 border-dashed border-gray-300">
-                    <p className="text-gray-600 text-lg mb-4">📦 No products found</p>
-                    <p className="text-gray-500 text-sm mb-6">Get started by adding your first product</p>
+                  <div className="glass-panel rounded-[28px] border border-dashed border-slate-300 py-12 text-center">
+                    <p className="mb-4 text-lg text-slate-600">📦 No products found</p>
+                    <p className="mb-6 text-sm text-slate-500">Get started by adding your first product</p>
                     <button
                       onClick={() => setShowProductForm(true)}
-                      className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition"
+                      className="rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-2 font-semibold text-white shadow-lg transition hover:scale-[1.01]"
                     >
                       + Create First Product
                     </button>
@@ -310,7 +310,7 @@ const AdminDashboard = ({ setCurrentPage }) => {
                 ) : (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {products.map((product) => (
-                      <div key={product.id} className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition">
+                      <div key={product.id} className="glass-panel rounded-[28px] p-6 transition hover:-translate-y-1">
                         <div
                           style={{
                             position: 'relative',
@@ -436,8 +436,8 @@ const AdminDashboard = ({ setCurrentPage }) => {
               <p className="text-center text-gray-600 py-8">No orders found</p>
             ) : (
               <div className="space-y-6">
-                {orders.map((order) => (
-                  <div key={order.id} className="bg-white rounded-lg shadow p-6">
+                    {orders.map((order) => (
+                  <div key={order.id} className="glass-panel rounded-[28px] p-6">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                       <div>
                         <p className="text-gray-600 text-sm">Order ID</p>

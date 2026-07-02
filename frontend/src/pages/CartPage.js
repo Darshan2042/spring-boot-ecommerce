@@ -44,20 +44,19 @@ const CartPage = ({ setCurrentPage }) => {
         <Section padding="3xl" style={{ textAlign: 'center' }}>
           <div style={{ marginBottom: theme.spacing['2xl'] }}>
             <div style={{ fontSize: '4rem', marginBottom: theme.spacing.lg }}>🛒</div>
-            <h3 style={{ fontSize: theme.typography.fontSize['2xl'], fontWeight: 'bold', marginBottom: theme.spacing.md }}>
+            <h3 style={{ fontSize: theme.typography.fontSize['2xl'], fontWeight: 'bold', marginBottom: theme.spacing.md, color: theme.colors.text }}>
               Your cart is empty
             </h3>
             <p style={{ color: theme.colors.textSecondary, marginBottom: theme.spacing['2xl'] }}>
               Add some products to get started!
             </p>
           </div>
-          <Button onClick={() => setCurrentPage('products')}>
+          <Button onClick={() => setCurrentPage('products')} variant="primary" size="lg">
             Continue Shopping
           </Button>
         </Section>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 350px', gap: theme.spacing['2xl'], alignItems: 'start' }}>
-          {/* Cart Items */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 360px', gap: theme.spacing['2xl'], alignItems: 'start' }}>
           <Section spacing="xl">
             <div style={{ display: 'flex', flexDirection: 'column', gap: theme.spacing.lg }}>
               {cart.map((item) => {
@@ -73,25 +72,24 @@ const CartPage = ({ setCurrentPage }) => {
                       gap: theme.spacing.lg,
                       alignItems: 'flex-start',
                       transition: `all ${theme.transitions.fast}`,
+                      borderRadius: theme.borderRadius['2xl'],
                     }}
                   >
-                    {/* Product Image */}
                     <img
                       src={getProductImage({ name: item.productName })}
                       alt={item.productName}
                       style={{
-                        width: '100px',
-                        height: '100px',
+                        width: '110px',
+                        height: '110px',
                         objectFit: 'cover',
-                        borderRadius: theme.borderRadius.md,
+                        borderRadius: theme.borderRadius.xl,
                         flexShrink: 0,
                       }}
                     />
 
-                    {/* Item Details */}
                     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: theme.spacing.md }}>
                       <div>
-                        <h4 style={{ fontSize: theme.typography.fontSize.lg, fontWeight: 'bold', marginBottom: theme.spacing.sm }}>
+                        <h4 style={{ fontSize: theme.typography.fontSize.lg, fontWeight: 'bold', marginBottom: theme.spacing.sm, color: theme.colors.text }}>
                           {item.productName}
                         </h4>
                         <p style={{ fontSize: theme.typography.fontSize.sm, color: theme.colors.textSecondary }}>
@@ -99,70 +97,41 @@ const CartPage = ({ setCurrentPage }) => {
                         </p>
                       </div>
 
-                      {/* Quantity and Price */}
-                      <Flex gap="lg" style={{ alignItems: 'center' }}>
+                      <Flex gap="lg" style={{ alignItems: 'center', flexWrap: 'wrap' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: theme.spacing.sm }}>
                           <button
-                            onClick={() =>
-                              handleQuantityChange(item.productId || item.id, item.quantity - 1)
-                            }
+                            onClick={() => handleQuantityChange(item.productId || item.id, item.quantity - 1)}
                             style={{
                               background: theme.colors.backgroundSecondary,
                               border: `1px solid ${theme.colors.border}`,
-                              borderRadius: theme.borderRadius.sm,
+                              borderRadius: theme.borderRadius.full,
                               padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
                               cursor: 'pointer',
                               fontSize: theme.typography.fontSize.lg,
                               fontWeight: 'bold',
                               color: theme.colors.text,
                               transition: `all ${theme.transitions.fast}`,
-                            }}
-                            onMouseEnter={(e) => {
-                              e.target.style.background = theme.colors.error;
-                              e.target.style.color = 'white';
-                            }}
-                            onMouseLeave={(e) => {
-                              e.target.style.background = theme.colors.backgroundSecondary;
-                              e.target.style.color = theme.colors.text;
                             }}
                           >
                             −
                           </button>
 
-                          <div
-                            style={{
-                              width: '50px',
-                              textAlign: 'center',
-                              fontSize: theme.typography.fontSize.lg,
-                              fontWeight: 'bold',
-                              color: theme.colors.text,
-                            }}
-                          >
+                          <div style={{ width: '50px', textAlign: 'center', fontSize: theme.typography.fontSize.lg, fontWeight: 'bold', color: theme.colors.text }}>
                             {item.quantity}
                           </div>
 
                           <button
-                            onClick={() =>
-                              handleQuantityChange(item.productId || item.id, item.quantity + 1)
-                            }
+                            onClick={() => handleQuantityChange(item.productId || item.id, item.quantity + 1)}
                             style={{
                               background: theme.colors.backgroundSecondary,
                               border: `1px solid ${theme.colors.border}`,
-                              borderRadius: theme.borderRadius.sm,
+                              borderRadius: theme.borderRadius.full,
                               padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
                               cursor: 'pointer',
                               fontSize: theme.typography.fontSize.lg,
                               fontWeight: 'bold',
                               color: theme.colors.text,
                               transition: `all ${theme.transitions.fast}`,
-                            }}
-                            onMouseEnter={(e) => {
-                              e.target.style.background = theme.colors.success;
-                              e.target.style.color = 'white';
-                            }}
-                            onMouseLeave={(e) => {
-                              e.target.style.background = theme.colors.backgroundSecondary;
-                              e.target.style.color = theme.colors.text;
                             }}
                           >
                             +
@@ -188,12 +157,6 @@ const CartPage = ({ setCurrentPage }) => {
                             cursor: 'pointer',
                             transition: `all ${theme.transitions.fast}`,
                           }}
-                          onMouseEnter={(e) => {
-                            e.target.style.transform = 'scale(1.2)';
-                          }}
-                          onMouseLeave={(e) => {
-                            e.target.style.transform = 'scale(1)';
-                          }}
                         >
                           🗑️
                         </button>
@@ -205,74 +168,43 @@ const CartPage = ({ setCurrentPage }) => {
             </div>
           </Section>
 
-          {/* Order Summary Sidebar */}
           <Card
             variant="elevated"
             style={{
               position: 'sticky',
               top: `calc(64px + ${theme.spacing.lg})`,
               padding: theme.spacing.lg,
+              borderRadius: theme.borderRadius['2xl'],
             }}
           >
-            <h3 style={{ fontSize: theme.typography.fontSize.xl, fontWeight: 'bold', marginBottom: theme.spacing.lg }}>
+            <h3 style={{ fontSize: theme.typography.fontSize.xl, fontWeight: 'bold', marginBottom: theme.spacing.lg, color: theme.colors.text }}>
               Order Summary
             </h3>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: theme.spacing.md, marginBottom: theme.spacing.lg }}>
-              {/* Subtotal */}
               <Flex justify="space-between">
                 <span style={{ color: theme.colors.textSecondary }}>Subtotal:</span>
-                <span style={{ fontWeight: 'bold', color: theme.colors.text }}>
-                  {formatINR(subtotal)}
-                </span>
+                <span style={{ fontWeight: 'bold', color: theme.colors.text }}>{formatINR(subtotal)}</span>
               </Flex>
-
-              {/* Shipping */}
               <Flex justify="space-between">
                 <span style={{ color: theme.colors.textSecondary }}>Shipping:</span>
-                <span style={{ fontWeight: 'bold', color: theme.colors.text }}>
-                  {formatINR(shipping)}
-                </span>
+                <span style={{ fontWeight: 'bold', color: theme.colors.text }}>{formatINR(shipping)}</span>
               </Flex>
-
-              {/* Tax */}
               <Flex justify="space-between">
                 <span style={{ color: theme.colors.textSecondary }}>Tax (8%):</span>
-                <span style={{ fontWeight: 'bold', color: theme.colors.text }}>
-                  {formatINR(tax)}
-                </span>
+                <span style={{ fontWeight: 'bold', color: theme.colors.text }}>{formatINR(tax)}</span>
               </Flex>
-
-              {/* Divider */}
-              <div style={{ borderTop: `2px solid ${theme.colors.border}`, paddingTop: theme.spacing.md }}></div>
-
-              {/* Total */}
+              <div style={{ borderTop: `2px solid ${theme.colors.border}`, paddingTop: theme.spacing.md }} />
               <Flex justify="space-between" style={{ marginBottom: theme.spacing.md }}>
-                <span style={{ fontWeight: 'bold', fontSize: theme.typography.fontSize.lg, color: theme.colors.text }}>
-                  Total:
-                </span>
-                <span
-                  style={{
-                    fontSize: theme.typography.fontSize['2xl'],
-                    fontWeight: 'bold',
-                    background: theme.gradients.primary,
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                  }}
-                >
+                <span style={{ fontWeight: 'bold', fontSize: theme.typography.fontSize.lg, color: theme.colors.text }}>Total:</span>
+                <span style={{ fontSize: theme.typography.fontSize['2xl'], fontWeight: 'bold', background: theme.gradients.primary, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                   {formatINR(total)}
                 </span>
               </Flex>
             </div>
 
-            {/* Buttons */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: theme.spacing.md }}>
-              <Button
-                onClick={handleCheckout}
-                style={{
-                  width: '100%',
-                }}
-              >
+              <Button onClick={handleCheckout} style={{ width: '100%' }}>
                 Proceed to Checkout
               </Button>
 
@@ -283,33 +215,23 @@ const CartPage = ({ setCurrentPage }) => {
                   padding: `${theme.spacing.md} ${theme.spacing.lg}`,
                   background: theme.colors.backgroundSecondary,
                   border: `1px solid ${theme.colors.border}`,
-                  borderRadius: theme.borderRadius.md,
+                  borderRadius: theme.borderRadius.full,
                   fontSize: theme.typography.fontSize.base,
                   fontWeight: theme.typography.fontWeight.medium,
                   color: theme.colors.text,
                   cursor: 'pointer',
-                  transition: `all ${theme.transitions.fast}`,
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.background = theme.colors.border;
-                  e.target.style.transform = 'translateY(-2px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.background = theme.colors.backgroundSecondary;
-                  e.target.style.transform = 'translateY(0)';
                 }}
               >
                 Continue Shopping
               </button>
             </div>
 
-            {/* Items Count */}
             <div
               style={{
                 marginTop: theme.spacing.lg,
                 padding: theme.spacing.md,
                 background: theme.colors.backgroundSecondary,
-                borderRadius: theme.borderRadius.md,
+                borderRadius: theme.borderRadius.xl,
                 textAlign: 'center',
                 fontSize: theme.typography.fontSize.sm,
                 color: theme.colors.textSecondary,

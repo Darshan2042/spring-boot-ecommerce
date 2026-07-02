@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useBounce } from '../hooks/useAnimation';
+import { ShoppingCart } from 'lucide-react';
 
 /**
  * ShoppingCartBadge Component
@@ -30,14 +31,15 @@ const ShoppingCartBadge = ({ count = 0, onClick }) => {
   return (
     <motion.button
       onClick={onClick}
-      className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors"
+      aria-label={`Shopping cart with ${count} items`}
+      className="relative inline-flex items-center justify-center rounded-2xl border border-slate-200/80 bg-white/75 p-3 text-slate-900 shadow-sm backdrop-blur transition"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
-      <span className="text-2xl">🛒</span>
+      <ShoppingCart size={22} strokeWidth={2.1} />
       {count > 0 && (
         <motion.div
-          className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"
+          className="absolute -top-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-teal-500 text-[11px] font-bold text-white shadow-lg"
           initial={{ scale: 0 }}
           animate={isBouncing ? 'bounce' : { scale: 1 }}
           variants={badgeVariants}

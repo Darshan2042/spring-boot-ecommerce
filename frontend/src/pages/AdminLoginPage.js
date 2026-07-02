@@ -115,7 +115,7 @@ const AdminLoginPage = ({ setCurrentPage }) => {
     <div
       style={{
         minHeight: '100vh',
-        background: 'linear-gradient(135deg, #F8FBFD 0%, #EAF4F8 100%)',
+        background: 'linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -186,14 +186,14 @@ const AdminLoginPage = ({ setCurrentPage }) => {
         ref={containerRef}
         style={{
           position: 'relative',
-          background: theme.colors.backgroundSecondary,
+          background: 'rgba(255,255,255,0.78)',
           borderRadius: theme.borderRadius['2xl'],
-          boxShadow: theme.shadows['2xl'],
+          boxShadow: '0 24px 80px rgba(15,23,42,0.14)',
           overflow: 'hidden',
           backdropFilter: 'blur(10px)',
           width: '100%',
-          maxWidth: '420px',
-          border: `1px solid ${theme.colors.primary}40`,
+          maxWidth: '520px',
+          border: '1px solid rgba(255,255,255,0.6)',
           zIndex: 10,
           animation: 'fadeIn 0.5s ease-out',
         }}
@@ -201,7 +201,7 @@ const AdminLoginPage = ({ setCurrentPage }) => {
         {/* Header with Gradient */}
         <div
           style={{
-            background: `linear-gradient(135deg, #BFD7E3 0%, #8bbcd3 100%)`,
+            background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
             padding: `${theme.spacing.xl} ${theme.spacing.lg}`,
             textAlign: 'center',
             position: 'relative',
@@ -212,18 +212,18 @@ const AdminLoginPage = ({ setCurrentPage }) => {
             style={{
               fontSize: theme.typography.fontSize['4xl'],
               fontWeight: theme.typography.fontWeight.bold,
-              color: '#1E293B',
+              color: '#FFFFFF',
               marginBottom: theme.spacing.sm,
               position: 'relative',
               zIndex: 2,
             }}
           >
-            🛍️ ShopHub
+            ShopHub
           </h1>
           <p
             style={{
               fontSize: theme.typography.fontSize.sm,
-              color: 'rgba(30, 41, 59, 0.8)',
+              color: 'rgba(255,255,255,0.84)',
               position: 'relative',
               zIndex: 2,
               letterSpacing: '0.1em',
@@ -241,10 +241,10 @@ const AdminLoginPage = ({ setCurrentPage }) => {
             style={{
               marginBottom: theme.spacing.lg,
               padding: theme.spacing.md,
-              background: `linear-gradient(135deg, #BFD7E3 0%, #8bbcd3 100%)`,
-              borderRadius: theme.borderRadius.lg,
-              boxShadow: theme.shadows.md,
-              border: `1px solid #8bbcd3`,
+                background: 'linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)',
+                borderRadius: theme.borderRadius.xl,
+                boxShadow: '0 14px 30px rgba(37,99,235,0.20)',
+                border: '1px solid rgba(255,255,255,0.12)',
               animation: 'pulse 2s ease-in-out infinite',
             }}
           >
@@ -431,11 +431,12 @@ const AdminLoginPage = ({ setCurrentPage }) => {
               style={{
                 width: '100%',
                 marginTop: theme.spacing.xl,
-                background: `linear-gradient(135deg, #BFD7E3 0%, #8bbcd3 100%)`,
-                color: '#1E293B',
-                boxShadow: '0 10px 30px rgba(191, 215, 227, 0.4)',
+                background: 'linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)',
+                color: '#FFFFFF',
+                boxShadow: '0 14px 30px rgba(37,99,235,0.25)',
                 fontWeight: 'bold',
                 border: 'none',
+                borderRadius: theme.borderRadius.full,
               }}
             >
               {loading ? '🔄 Authenticating...' : '🔑 Access Admin Panel'}

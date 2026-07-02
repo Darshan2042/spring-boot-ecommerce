@@ -1,4 +1,5 @@
 import React from 'react';
+import { Loader2 } from 'lucide-react';
 
 /**
  * Loading Spinner - Shows while page is loading
@@ -6,17 +7,13 @@ import React from 'react';
  */
 const LoadingSpinner = () => {
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center" style={{ paddingTop: '80px' }}>
-      <div className="text-center">
-        {/* Animated spinner */}
-        <div className="relative w-16 h-16 mx-auto mb-6">
-          <div className="absolute inset-0 rounded-full border-4 border-gray-200"></div>
-          <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-indigo-600 animate-spin"></div>
+    <div className="flex min-h-[70vh] items-center justify-center px-4 py-10">
+      <div className="glass-panel w-full max-w-md rounded-[28px] p-8 text-center">
+        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-teal-500 text-white shadow-xl">
+          <Loader2 className="h-8 w-8 animate-spin" />
         </div>
-
-        {/* Loading text */}
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Loading...</h2>
-        <p className="text-gray-600">Please wait while we prepare your content</p>
+        <h2 className="mb-2 text-2xl font-bold text-slate-900">Loading your experience</h2>
+        <p className="text-slate-500">Preparing products, cart, and checkout details</p>
       </div>
     </div>
   );
