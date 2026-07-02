@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { apiService } from '../services/apiService';
 import { useAppContext } from '../context/AppContext';
@@ -12,15 +12,7 @@ const OrdersPage = ({ setCurrentPage }) => {
   const [loading, setLoading] = useState(true);
   const [expandedOrder, setExpandedOrder] = useState(null);
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      loadOrders();
-    } else {
-      setCurrentPage('auth');
-    }
-  }, [isAuthenticated, setCurrentPage]);
-
-  const loadOrders = async () => {
+  const loadOrders = useCallback(async () => {
     setLoading(true);
     try {
       const response = await apiService.getOrders();
@@ -34,7 +26,15 @@ const OrdersPage = ({ setCurrentPage }) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [showNotification]);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      loadOrders();
+    } else {
+      setCurrentPage('auth');
+    }
+  }, [isAuthenticated, setCurrentPage, loadOrders]);
 
   const handleCancelOrder = async (orderId) => {
     if (!window.confirm('Are you sure you want to cancel this order?')) {
